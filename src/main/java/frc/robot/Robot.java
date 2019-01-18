@@ -17,14 +17,11 @@ import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.IO.RobotMap;
-import frc.robot.commands.Shoot;
-import frc.robot.drive.DriveStraight;
-import frc.robot.drive.Drivetrain;
-import frc.robot.drive.Vision;
-import frc.robot.mechanisms.Lift;
-import frc.robot.mechanisms.Shooter;
-import frc.robot.mechanisms.ShooterArm;
+import frc.robot.Drive.DriveStraight;
+import frc.robot.Drive.Drivetrain;
+import frc.robot.Mechanisms.Lift;
+import frc.robot.Mechanisms.Shooter;
+import frc.robot.Mechanisms.ShooterArm;
 
 //import static frc.robot.OI.xbox1;
 
@@ -44,24 +41,16 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  // AHRS navx = new AHRS(Port.kMXP);
   // CameraServer cam1 = CameraServer.getInstance();
-//  DriveStraight autothing;
+  DriveStraight autothing;
   double angle;
-//  double speeds[] = new double[2];
-//  AHRS navx;
-//  Vision cam = new Vision();
+  double speeds[] = new double[2];
+  AHRS navx;
   double tempheading = 0.0;
   public static ShooterArm shoot = new ShooterArm();
   public static Lift lift = new Lift();
   public static Shooter shooter = new Shooter();
   Compressor comp = new Compressor(0);
-  // GripPipeline grip;
-  // private Thread visionThread;
-
-  // double centerX = 0;
-  // private final Object imgLock = new Object();
-  // public double turn = 0.0;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -69,7 +58,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-//    navx = new AHRS(Port.kMXP);
+    navx = new AHRS(Port.kMXP);
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -146,10 +135,10 @@ public class Robot extends TimedRobot {
 //    case kDefaultAuto:
 //    default:
 //      // Put default auto code here
-////      speeds = autothing.smth(navx, 0, angle, .03);
-////      System.out.println("left = " + speeds[1] + " , right = " + speeds[0]);
-////      System.out.println("Heading = " + navx.getAngle());
-//      drive.tankdrive(-speeds[0], speeds[1], false);
+      speeds = autothing.smth(navx, 0, angle, .03);
+      System.out.println("left = " + speeds[1] + " , right = " + speeds[0]);
+      System.out.println("Heading = " + navx.getAngle());
+      drive.tankdrive(-speeds[0], speeds[1], false);
 //
 //      break;
 
@@ -179,7 +168,7 @@ public class Robot extends TimedRobot {
 //    System.out.println("Heading = " + navx.getAngle());
 
 //    shoot.armUp(xbox1);
-//    drive.tankdrive(xbox1.getY(Hand.kRight), xbox1.getY(Hand.kLeft), false);
+//    Drive.tankdrive(xbox1.getY(Hand.kRight), xbox1.getY(Hand.kLeft), false);
   }
 
   @Override
@@ -200,7 +189,7 @@ public class Robot extends TimedRobot {
     // double tempangle = turn;
     // System.out.println("turn = " + tempangle +", navx = "+ navx.getAngle());
     // speeds = autothing.smth(navx, 0, angle + turn*.4, .011);
-    // drive.tankdrive(-speeds[0]*.5, speeds[1]*.5, false);
+    // Drive.tankdrive(-speeds[0]*.5, speeds[1]*.5, false);
 
 
 
@@ -225,16 +214,16 @@ public class Robot extends TimedRobot {
 //        speeds[1] = .3;
 //      }
 //      System.out.println("Right Speed = " + speeds[0] + "Left Speed = " + speeds[1]);
-//            drive.tankdrive(speeds[0], speeds[1], false);
+//            Drive.tankdrive(speeds[0], speeds[1], false);
 //    }
 //    else if (!cam.isEmpty() || (-7 < heading && heading < 7) ){
-//      drive.tankdrive(-.4, -.4, false);
+//      Drive.tankdrive(-.4, -.4, false);
 //      System.out.println("isEmpty and go forwards");
 ////      System.out.println("Stopped");
 //
 //    }
 //    else {
-////      drive.tankdrive(0.0, 0.0, false);
+////      Drive.tankdrive(0.0, 0.0, false);
 //      System.out.println("Stopped");
 ////      System.out.println("isEmpty and go forwards");
 //    }

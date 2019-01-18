@@ -2,11 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.mechanisms.Shooter;
 
-public class BeGone extends Command {
+public class Extend extends Command {
 
-    public BeGone() {
+    public Extend() {
         requires(Robot.shooter);
         setTimeout(1);
     }

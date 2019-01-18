@@ -1,13 +1,10 @@
-package frc.robot.mechanisms;
+package frc.robot.Mechanisms;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.IO.RobotMap;
-import frc.robot.Robot;
 
 public class Shooter extends Subsystem {
 //    SpeedController shooterArm = new Spark(4);

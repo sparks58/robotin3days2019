@@ -2,11 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.mechanisms.Shooter;
 
-public class Succ extends Command {
+public class RecieveBall extends Command {
 //    private Shooter shooter = new Shooter();
-    public Succ() {
+    public RecieveBall() {
         requires(Robot.shooter);
         setTimeout(3);
     }

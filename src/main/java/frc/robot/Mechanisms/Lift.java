@@ -1,10 +1,9 @@
-package frc.robot.mechanisms;
+package frc.robot.Mechanisms;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.IO.RobotMap;
-import frc.robot.OI;
 
 public class Lift extends Subsystem {
     XboxController xboxController = new XboxController(0);

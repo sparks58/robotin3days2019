@@ -1,9 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.IO.RobotMap;
 import frc.robot.Robot;
-import frc.robot.mechanisms.Shooter;
 
 public class SpinWheel extends Command {
     SpinWheel() {
